@@ -5,6 +5,10 @@ import { useAuth } from '../contexts/AuthContext';
 import { computeMTTR, formatRelativeTime } from '../lib/utils';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Link } from 'react-router-dom';
+import { NumberTicker } from '../components/NumberTicker';
+import { BorderBeam } from '../components/BorderBeam';
+import { MagicButton } from '../components/MagicButton';
+import { Meteors } from '../components/Meteors';
 
 export default function DashboardPage() {
   const { incidents } = useIncidents();
@@ -58,34 +62,45 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col gap-8 animate-fade-in">
       
+      <div className="flex items-center justify-between relative">
+        <h2 className="text-2xl font-bold text-white">Resumen Operativo</h2>
+        <Link to="/incidents">
+          <MagicButton icon={<span>⚡</span>}>Nuevo Incidente</MagicButton>
+        </Link>
+      </div>
+
       {/* Top Value Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
         
         <div className="card flex flex-col gap-2 relative overflow-hidden group hover:border-[#60a5fa]/50">
           <div className="absolute inset-0 bg-[#60a5fa]/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
           <div className="text-sm font-medium text-[#9898a8]">Incidentes Abiertos</div>
-          <div className="text-3xl font-bold text-white">{openIncidents}</div>
+          <div className="text-3xl font-bold text-white"><NumberTicker value={openIncidents} /></div>
+          <BorderBeam size={100} duration={8} delay={1} colorFrom="#4D33DE" colorTo="#60a5fa" />
         </div>
         
         <div className={`card flex flex-col gap-2 relative overflow-hidden group hover:border-[#f97316]/50 ${escalatedIncidents > 0 ? 'border-[#f97316]/30' : ''}`}>
+          {escalatedIncidents > 0 && <Meteors number={10} />}
           <div className="absolute inset-0 bg-[#f97316]/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-          <div className="text-sm font-medium text-[#9898a8] flex items-center justify-between">
+          <div className="text-sm font-medium text-[#9898a8] flex items-center justify-between relative z-10">
             Incidentes Escalados
             {escalatedIncidents > 0 && <span className="w-2 h-2 rounded-full bg-[#f97316] animate-pulse"></span>}
           </div>
-          <div className={`text-3xl font-bold ${escalatedIncidents > 0 ? 'text-[#f97316]' : 'text-white'}`}>{escalatedIncidents}</div>
+          <div className={`text-3xl font-bold relative z-10 ${escalatedIncidents > 0 ? 'text-[#f97316]' : 'text-white'}`}>
+            <NumberTicker value={escalatedIncidents} />
+          </div>
         </div>
 
         <div className="card flex flex-col gap-2 relative overflow-hidden group hover:border-[#10b981]/50">
           <div className="absolute inset-0 bg-[#10b981]/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
           <div className="text-sm font-medium text-[#9898a8]">Resueltos Hoy</div>
-          <div className="text-3xl font-bold text-white">{resolvedToday}</div>
+          <div className="text-3xl font-bold text-white"><NumberTicker value={resolvedToday} /></div>
         </div>
         
-        <div className="card flex flex-col gap-2">
+        <div className="card flex flex-col gap-2 relative overflow-hidden">
           <div className="text-sm font-medium text-[#9898a8]">MTTR (Promedio)</div>
-          <div className="text-3xl font-bold text-white flex items-baseline gap-2">
-            {mttr} <span className="text-sm font-normal text-[#9898a8]">horas</span>
+          <div className="text-3xl font-bold text-white flex items-baseline gap-2 relative z-10">
+            <NumberTicker value={mttr} /> <span className="text-sm font-normal text-[#9898a8]">horas</span>
           </div>
         </div>
       </div>

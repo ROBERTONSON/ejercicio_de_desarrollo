@@ -1,5 +1,14 @@
 // Utility functions — shared across the application
 import { format, formatDistanceToNow, parseISO } from 'date-fns';
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+/**
+ * Combines tailwind CSS classes without style conflicts
+ */
+export function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
 
 /**
  * Generate a simple UUID v4 for mock operations
