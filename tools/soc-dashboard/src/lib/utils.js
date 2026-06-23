@@ -103,7 +103,7 @@ export function getStatusClass(status) {
   const classes = {
     open: 'status-open',
     investigating: 'status-investigating',
-    contained: 'status-contained',
+    escalated: 'status-escalated',
     resolved: 'status-resolved',
     closed: 'status-closed',
   };
@@ -117,7 +117,7 @@ export function getStatusDotClass(status) {
   const classes = {
     open: 'status-dot-open',
     investigating: 'status-dot-investigating',
-    contained: 'status-dot-contained',
+    escalated: 'status-dot-escalated',
     resolved: 'status-dot-resolved',
     closed: 'status-dot-closed',
   };

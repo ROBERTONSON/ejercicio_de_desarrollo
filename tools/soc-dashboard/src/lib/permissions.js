@@ -18,7 +18,7 @@ const PERMISSIONS = {
   change_status: { minRole: 'analyst', requiresAssignment: true },
   change_severity: { minRole: 'analyst', requiresAssignment: true },
   assign_incident: { minRole: 'analyst' },
-  add_note: { minRole: 'analyst', requiresAssignment: true },
+  add_note: { minRole: 'analyst' },
   override_lock: { minRole: 'admin' },
   delete_incident: { minRole: 'admin' },
 };

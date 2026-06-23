@@ -361,7 +361,7 @@ textarea.input {
 
 .status-open { background: rgba(239,68,68,0.12); color: var(--color-status-open); }
 .status-investigating { background: rgba(249,115,22,0.12); color: var(--color-status-investigating); }
-.status-contained { background: rgba(234,179,8,0.12); color: var(--color-status-contained); }
+.status-escalated { background: rgba(234,179,8,0.12); color: var(--color-status-contained); }
 .status-resolved { background: rgba(34,197,94,0.12); color: var(--color-status-resolved); }
 .status-closed { background: rgba(107,114,128,0.12); color: var(--color-status-closed); }
 
@@ -375,7 +375,7 @@ textarea.input {
 
 .status-dot-open { background: var(--color-status-open); }
 .status-dot-investigating { background: var(--color-status-investigating); }
-.status-dot-contained { background: var(--color-status-contained); }
+.status-dot-escalated { background: var(--color-status-contained); }
 .status-dot-resolved { background: var(--color-status-resolved); }
 .status-dot-closed { background: var(--color-status-closed); }
 

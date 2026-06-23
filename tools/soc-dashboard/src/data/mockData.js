@@ -69,7 +69,7 @@ export const incidents = [
     title: 'Brute Force Attack — SSH Gateway',
     description: 'Over 15,000 failed SSH login attempts detected from IP range 185.220.x.x targeting bastion-01. Rate limiting triggered but attack is ongoing.',
     severity: 'high',
-    status: 'contained',
+    status: 'escalated',
     assigneeId: 'usr-002',
     reportedBy: 'usr-002',
     createdAt: '2026-04-11T14:22:00Z',
@@ -356,7 +356,7 @@ export const auditLog = [
     actorId: 'usr-002',
     action: 'status_change',
     previousValue: 'investigating',
-    newValue: 'contained',
+    newValue: 'escalated',
     timestamp: '2026-04-12T10:00:00Z',
     metadata: {}
   },
@@ -465,7 +465,7 @@ export const auditLog = [
     incidentId: 'inc-008',
     actorId: 'usr-001',
     action: 'status_change',
-    previousValue: 'contained',
+    previousValue: 'escalated',
     newValue: 'closed',
     timestamp: '2026-04-06T08:00:00Z',
     metadata: {}
